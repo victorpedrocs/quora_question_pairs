@@ -6,7 +6,7 @@ from sklearn import naive_bayes
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.cross_validation import cross_val_score
 
-dataset = open('dataset_concat_stemm.csv', 'r')
+dataset = open('datasets/dataset_concat_stemm.csv', 'r')
 dataset = read_csv(dataset, header=None, delimiter='\t')
 
 print(dataset.shape)
@@ -24,9 +24,6 @@ classifier = naive_bayes.MultinomialNB()
 
 # classifier = RandomForestClassifier(n_estimators=5, n_jobs=-1)
 
-scores = cross_val_score(classifier, x, y, cv=2, n_jobs=-1)
+scores = cross_val_score(classifier, x, y, cv=5, n_jobs=-1, scoring='log_loss')
 
 print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-
-
-
