@@ -31,5 +31,7 @@ for row in dataset.itertuples():
     q = q1 + " " + q2
     y = row[6]
     csv_writer.writerow([q,y])
+    q = q2 + " " + q1
+    csv_writer.writerow([q,y])
 
 out.close()
