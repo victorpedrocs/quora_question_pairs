@@ -4,13 +4,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import naive_bayes
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.cross_validation import cross_val_score
+from sklearn.model_selection import cross_val_score
 
 from gensim.models.keyedvectors import KeyedVectors
 from nltk.tokenize import RegexpTokenizer
 from sklearn.svm import SVC
 
-dataset = open('datasets/dataset_concat_unique.csv', 'r')
+dataset = open('datasets/dataset_simple_0.1.csv', 'r')
 dataset = read_csv(dataset, header=None, delimiter='\t')
 
 print(dataset.shape)

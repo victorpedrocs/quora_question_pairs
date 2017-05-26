@@ -12,7 +12,7 @@ def main(argv):
 
     for opt, arg in opts:
         if opt == '-h':
-            print("-s <sample_size>")
+            print("-t [stemm, tokenize, simple]")
             sys.exit()
         elif opt == '-t':
             out_type = arg

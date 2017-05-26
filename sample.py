@@ -5,7 +5,7 @@ def main(argv):
     size = ''
     out_type = ''
     try:
-        opts, args = getopt.getopt(argv, "hs:")
+        opts, args = getopt.getopt(argv, "hs:t:")
     except getopt.GetoptError:
         print("-s <sample_size>")
         sys.exit(2)
@@ -15,11 +15,11 @@ def main(argv):
             print("-s <sample_size>")
             sys.exit()
         elif opt == '-s':
-            sample_size = arg
+            size = arg
         elif opt == '-t':
             out_type = arg
 
-    ss.generate(int(size), out_type)
+    ss.generate(float(size), out_type)
 
 
 
