@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import naive_bayes
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
+from sklearn import neighbors
 
 from gensim.models.keyedvectors import KeyedVectors
 from nltk.tokenize import RegexpTokenizer
@@ -48,8 +49,8 @@ print(y.shape)
 
 # classifier = naive_bayes.MultinomialNB()
 # classifier = RandomForestClassifier(n_estimators=15, n_jobs=-1)
-classifier = SVC(C=5, gamma=0.05, kernel="sigmoid")
-
+# classifier = SVC(C=5, gamma=0.05, kernel="sigmoid", probability=True)
+classifier = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=-1)
 scores = cross_val_score(classifier, x, y, cv=5, n_jobs=-1, scoring='log_loss')
 
 print("Logloss: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
