@@ -10,7 +10,9 @@ from sklearn.model_selection import cross_val_score
 from gensim.models.keyedvectors import KeyedVectors
 from nltk.tokenize import RegexpTokenizer
 from sklearn.svm import SVC
+import time
 
+start = time.time()
 print("Open Dataset...")
 dataset = open('datasets/dataset_simple_0.1.csv', 'r')
 dataset = read_csv(dataset, header=None, delimiter='\t')
@@ -60,6 +62,11 @@ classifier = SVC(C=5, gamma=0.05, kernel="sigmoid", probability=True)
 # classifier = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=-1)
 
 print("Cross validating...")
-scores = cross_val_score(classifier, x, y, cv=5, n_jobs=-1, scoring='log_loss')
+scores = cross_val_score(classifier, x, y, cv=5,
+                         n_jobs=-1, scoring='neg_log_loss')
+
+end = time.time()
+elapsed = end - start
 
 print("Logloss: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+print("Elapsed time: ", elapsed)
