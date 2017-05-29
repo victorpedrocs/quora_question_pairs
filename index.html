@@ -12991,7 +12991,7 @@ NW0mE/wAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Word2Vec-(GloVe)">Word2Vec (GloVe)<a class="anchor-link" href="#Word2Vec-(GloVe)">&#182;</a></h3><p>Outra forma de extração de <em>features</em> em dados textuais é a utilização de modelos de aprendizado de máquina, que dado um conjunto de dados de entrada, geram um espaço vetorial de dimensionalidade reduzida, em que cada palavra é um vetor deste espaço. Esta representação guarda informações contextuais de uma palavra baseado em sua aparição no conjunto de entrada <a href="https://arxiv.org/abs/1402.3722">[5]</a>.
+<h3 id="Word2Vec-(GloVe)">Word2Vec (GloVe)<a class="anchor-link" href="#Word2Vec-(GloVe)">&#182;</a></h3><p>Outra forma de extração de <em>features</em> em dados textuais é a utilização de modelos de aprendizado de máquina, que dado um conjunto de dados de entrada, geram um espaço vetorial de dimensionalidade reduzida, em que cada palavra é um vetor deste espaço. Esta representação guarda informações contextuais de uma palavra baseado em sua aparição no conjunto de entrada <a href="https://arxiv.org/abs/1402.3722">[5]</a>. 
 O algoritmo mais populares e que foi utilizado neste trabalho é o Word2vec <a href="https://arxiv.org/abs/1402.3722">[5]</a>, juntamente com o modelos pré-treinados pertencentes ao projeto <em>GloVe</em>, criado na universidade de Stanford <a href="https://nlp.stanford.edu/projects/glove/">[6]</a>.</p>
 <p>A escolha do <em>GloVe</em> se deve ao fato da disponibilização de modelos com dimensões variáveis, 50, 100, 200 e 300. Estes modelos foram gerados a partir de dados da <em>Wikipedia</em>, e possuem 6B de tokens e 400 mil vocábulos. Após testes preliminares, o modelo com 300 dimensões foi o que apresentou melhores resultados.</p>
 
@@ -13024,7 +13024,7 @@ O algoritmo mais populares e que foi utilizado neste trabalho é o Word2vec <a h
 <span class="c1"># ...</span>
 <span class="c1"># divide a row by the norm</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]))</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]))</span>  
 </pre></div>
 
 </div>
@@ -13046,6 +13046,14 @@ O algoritmo mais populares e que foi utilizado neste trabalho é o Word2vec <a h
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Modelos-de-aprendizado">Modelos de aprendizado<a class="anchor-link" href="#Modelos-de-aprendizado">&#182;</a></h2><p>Os classificadores utilizados nos experimentos foram o Random Forest e XGboost, ambos baseados em árvores de decisão. O método de avaliação dos modelos gerados foi o <em>cross-validation</em> com 5 <em>folds</em>, utilzando a métrica <em>Log Loss</em> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html">[7]</a> como parâmetro de avaliação.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Random-Forest">Random Forest<a class="anchor-link" href="#Random-Forest">&#182;</a></h3><p>Os experimentos com o classificador Random Forest <a href="http://ai2-s2-pdfs.s3.amazonaws.com/6e63/3b41d93051375ef9135102d54fa097dc8cf8.pdf">[8]</a> consistiram na variação do número de árvores, 100 e 200, pois alguns dos parâmetros são definidos automaticamente por meio de heurísticas. Os demais parâmetros não foram ajustados devido ao fato de que em testes preliminares em uma amostra do dataset, não houve ganhos em relação aos valores padrões.</p>
 <p>Não prosseguimos com os testes utilizando este modelo pois comparado ao XGBoost, este obteve rendimento inferior.</p>
 
