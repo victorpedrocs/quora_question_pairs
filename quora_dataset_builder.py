@@ -1,11 +1,10 @@
-from gensim.scripts.glove2word2vec import glove2word2vec
+# quora_dataset_builder
 from pandas import read_csv
 import csv
 from nltk.stem.snowball import EnglishStemmer
 from nltk.tokenize import RegexpTokenizer
 from contractions import *
 
-# glove2word2vec('datasets/glove.6B.300d.txt', 'datasets/glove.6B.300d.word2vec')
 tokenizer = RegexpTokenizer(r'\w+')
 stemmer = EnglishStemmer()
 
@@ -22,28 +21,18 @@ def stem(q):
     return ' '.join([stemmer.stem(word).lower() for word in tokenizer.tokenize(q)])
 
 def generate(out_type):
-    # open the raw dataset
-    dataset = open('datasets/dataset.csv', 'r')
-    # load into a dataframe
-    dataset = read_csv(dataset, header='infer', delimiter='\t')
+    # load the dataset into a dataframe
+    dataset = read_csv('./datasets/dataset.csv', header='infer', delimiter='\t')
 
     # drop unecessary columns
     dataset.drop(dataset.columns[[0,1,2]], axis=1, inplace=True)
 
-    # limit to the size
-    # if out_type == 'simple':
-    #     dataset['q1'] = dataset['q1'].apply(replace_contractions)
-    #     dataset['q2'] = dataset['q2'].apply(replace_contractions)
-    # elif out_type == 'tokenize':
-    #     dataset['q1'] = dataset['q1'].apply(tokenize)
-    #     dataset['q2'] = dataset['q2'].apply(tokenize)
-    # elif out_type == 'stemm':
-    #     dataset['q1'] = dataset['q1'].apply(stem)
-    #     dataset['q2'] = dataset['q2'].apply(stem)
-
-    out = open('datasets/dataset_'+out_type+'.csv', mode='w')
+    out = open('./datasets/dataset_'+out_type+'.csv', mode='w')
     csv_writer = csv.writer(out, delimiter='\t')
-
+    
+    # remove non-ascii characters
+    dataset.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True)
+        
     for row in dataset.itertuples():
         q1 = row[1].strip() # copy the tuple content to q1
         q2 = row[2].strip() # copy the tuple content to q2
