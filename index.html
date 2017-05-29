@@ -15,8 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.min.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,7 +24,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
@@ -8507,15 +8507,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -11289,7 +11289,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -11732,7 +11732,7 @@ ul.typeahead-list > li > a {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
+
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -12991,7 +12991,7 @@ NW0mE/wAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Word2Vec-(GloVe)">Word2Vec (GloVe)<a class="anchor-link" href="#Word2Vec-(GloVe)">&#182;</a></h3><p>Outra forma de extração de <em>features</em> em dados textuais é a utilização de modelos de aprendizado de máquina, que dado um conjunto de dados de entrada, geram um espaço vetorial de dimensionalidade reduzida, em que cada palavra é um vetor deste espaço. Esta representação guarda informações contextuais de uma palavra baseado em sua aparição no conjunto de entrada <a href="https://arxiv.org/abs/1402.3722">[5]</a>. 
+<h3 id="Word2Vec-(GloVe)">Word2Vec (GloVe)<a class="anchor-link" href="#Word2Vec-(GloVe)">&#182;</a></h3><p>Outra forma de extração de <em>features</em> em dados textuais é a utilização de modelos de aprendizado de máquina, que dado um conjunto de dados de entrada, geram um espaço vetorial de dimensionalidade reduzida, em que cada palavra é um vetor deste espaço. Esta representação guarda informações contextuais de uma palavra baseado em sua aparição no conjunto de entrada <a href="https://arxiv.org/abs/1402.3722">[5]</a>.
 O algoritmo mais populares e que foi utilizado neste trabalho é o Word2vec <a href="https://arxiv.org/abs/1402.3722">[5]</a>, juntamente com o modelos pré-treinados pertencentes ao projeto <em>GloVe</em>, criado na universidade de Stanford <a href="https://nlp.stanford.edu/projects/glove/">[6]</a>.</p>
 <p>A escolha do <em>GloVe</em> se deve ao fato da disponibilização de modelos com dimensões variáveis, 50, 100, 200 e 300. Estes modelos foram gerados a partir de dados da <em>Wikipedia</em>, e possuem 6B de tokens e 400 mil vocábulos. Após testes preliminares, o modelo com 300 dimensões foi o que apresentou melhores resultados.</p>
 
@@ -13024,7 +13024,7 @@ O algoritmo mais populares e que foi utilizado neste trabalho é o Word2vec <a h
 <span class="c1"># ...</span>
 <span class="c1"># divide a row by the norm</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]))</span>  
+    <span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">row</span><span class="p">]))</span>
 </pre></div>
 
 </div>
@@ -13186,8 +13186,8 @@ require(
       waitSeconds: 15
     },
     [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.min.js"
     ],
 
     function(head, Reveal){
@@ -13203,9 +13203,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.min.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
