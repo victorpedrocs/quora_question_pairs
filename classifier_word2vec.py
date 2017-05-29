@@ -51,22 +51,3 @@ for row in dataset.itertuples():
     # x[row_index] = divide(x[row_index], words_count)
 
     row_index += 1
-
-print("Features shape: ", x.shape)
-print("Labels shape: ", y.shape)
-
-print("Instantiate the classifier...")
-# classifier = naive_bayes.MultinomialNB()
-# classifier = RandomForestClassifier(n_estimators=15, n_jobs=-1)
-classifier = SVC(C=5, gamma=0.05, kernel="sigmoid", probability=True)
-# classifier = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=-1)
-
-print("Cross validating...")
-scores = cross_val_score(classifier, x, y, cv=5,
-                         n_jobs=-1, scoring='neg_log_loss')
-
-end = time.time()
-elapsed = end - start
-
-print("Logloss: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-print("Elapsed time: ", elapsed)
