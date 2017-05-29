@@ -1,5 +1,5 @@
 import sys, getopt
-import quora_dataset_builder as dsb
+import dataset_builder as dsb
 
 def main(argv):
     out_type = ''
