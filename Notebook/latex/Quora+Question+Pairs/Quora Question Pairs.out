@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Introdução}{}% 1
+\BOOKMARK [1][-]{section.2}{Dataset}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Analisando\040o\040dataset}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Pré-processamento}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Remoção de contrações}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Tokenização e Stemming}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Preparando\040o\040modelo}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Bag\040of\040words\040e\040N-grams}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Redução de dimensionalidade}{subsection.4.1}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Word2Vec\040\(GloVe\)}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Modelos\040de\040aprendizado}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Random\040Forest}{section.5}% 12
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Resultados}{subsection.5.1}% 13
+\BOOKMARK [2][-]{subsection.5.2}{XGBoost}{section.5}% 14
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Resultados}{subsection.5.2}% 15
