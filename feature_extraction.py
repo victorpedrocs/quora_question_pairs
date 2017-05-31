@@ -34,7 +34,7 @@ def read_file(input_type):
 
 def save_features(name, X, y):
     save(f'./datasets/{name}_X', X)
-    save('./datasets/{name}_y', y)
+    save(f'./datasets/{name}_y', y)
 
 def join_question_pair(X):
     X = [a+b for a, b in pairwise(X)]
@@ -42,12 +42,14 @@ def join_question_pair(X):
     return X
 
 def bag_of_words(input_type=1):
-    N_DIM = 300
+    print('Generating bag of words...')
+    N_DIM = 3
     NG_RANGE = (1,2)
     (X, y) = read_file(input_type)
 
-    vectorizer = CountVectorizer(ngram_range=NG_RANGE)
-    X = vectorizer.fit_transform(x)
+    vectorizer = CountVectorizer(ngram_range=NG_RANGE, min_df=1 )
+    X = vectorizer.fit_transform(X)
+    print(X.shape)
 
     svd = TruncatedSVD(n_components=N_DIM)
     X = svd.fit_transform(X)
@@ -56,11 +58,12 @@ def bag_of_words(input_type=1):
     if input_type == 2:
         X = join_question_pair(X)
         # SVD again in the 600 feature set
-        X = svd.fit_transform(X)
+        # X = svd.fit_transform(X)
 
     save_features('bigram_bow_svd_300', X, y)
 
 def word2vec(input_type=1):
+    print('Generating word2vec...')
     tokenizer = RegexpTokenizer(r'\w+')
 
     model = KeyedVectors.load_word2vec_format(

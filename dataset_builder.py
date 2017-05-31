@@ -38,6 +38,7 @@ def read_file(path):
     return dataset
 
 def generate_concat(sample_size):
+    print('Generating concat file...')
     dataset = read_file('./datasets/smallsample.csv')
 
     out = open('./datasets/dataset_concat.csv', mode='w')
@@ -52,6 +53,7 @@ def generate_concat(sample_size):
     out.close()
 
 def generate_one_question_per_line(sample_size):
+    print('Generating one question per line file...')
     dataset = read_file('./datasets/smallsample.csv')
 
     out_X = open('./datasets/dataset_singlequestion_X.csv', mode='w')
