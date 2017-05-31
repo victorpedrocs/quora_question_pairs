@@ -37,24 +37,30 @@ def read_file(path):
     dataset.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True)
     return dataset
 
-def generate_concat():
+def generate_concat(sample_size):
     dataset = read_file('./datasets/smallsample.csv')
 
     out = open('./datasets/dataset_concat.csv', mode='w')
     csv_writer = csv.writer(out, delimiter='\t')
+
+    if sample_size > 0:
+        dataset = dataset.sample(sample_size)
 
     for row in dataset.itertuples():
         concat_row_prep(row, csv_writer)
 
     out.close()
 
-def generate_one_question_per_line():
+def generate_one_question_per_line(sample_size):
     dataset = read_file('./datasets/smallsample.csv')
 
     out_X = open('./datasets/dataset_singlequestion_X.csv', mode='w')
     out_y = open('./datasets/dataset_singlequestion_y.csv', mode='w')
     writer_X = csv.writer(out_X, delimiter='\t')
     writer_y = csv.writer(out_y, delimiter='\t')
+
+    if sample_size > 0:
+        dataset = dataset.sample(sample_size)
 
     for r in dataset.itertuples():
         writer_X.writerow([all_prep(r[1])])
@@ -63,36 +69,3 @@ def generate_one_question_per_line():
 
     out_X.close()
     out_y.close()
-
-def generate(out_type):
-    # load the dataset into a dataframe
-    dataset = read_csv('./datasets/dataset.csv', header='infer', delimiter='\t')
-
-    # drop unecessary columns
-    dataset.drop(dataset.columns[[0,1,2]], axis=1, inplace=True)
-
-    out = open('./datasets/dataset_'+out_type+'.csv', mode='w')
-    csv_writer = csv.writer(out, delimiter='\t')
-
-    # remove non-ascii characters
-    dataset.replace({r'[^\x00-\x7F]+':''}, regex=True, inplace=True)
-
-    for row in dataset.itertuples():
-        q1 = row[1].strip() # copy the tuple content to q1
-        q2 = row[2].strip() # copy the tuple content to q2
-        # Select the type of dataset
-        if out_type == 'simple':
-            q1 = tokenize(replace_contractions(q1))
-            q2 = tokenize(replace_contractions(q2))
-        elif out_type == 'stemm':
-            q1 = stem(replace_contractions(q1))
-            q2 = stem(replace_contractions(q2))
-
-        # Write the questions in the file
-        q = q1 + " " + q2
-        y = row[3]
-        csv_writer.writerow([q,y])
-        # q = q2 + " " + q1
-        # csv_writer.writerow([q,y])
-
-    out.close()

@@ -8,9 +8,10 @@ def print_help():
 
 def main(argv):
     out_type = ''
-    sample_size = ''
+    sample_size = 0
+    method = None
     try:
-        opts, args = getopt.getopt(argv, "hsc")
+        opts, args = getopt.getopt(argv, "hsc", ["sample="])
     except getopt.GetoptError:
         print_help()
         sys.exit(2)
@@ -20,9 +21,11 @@ def main(argv):
             print_help()
             sys.exit()
         elif opt == '-s':
-            dsb.generate_one_question_per_line()
+            method = dsb.generate_one_question_per_line
         elif opt == '-c':
-            dsb.generate_concat()
+            method = dsb.generate_concat
+        elif opt == '--sample'
+            sample_size = int(arg)
 
 
 
