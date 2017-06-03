@@ -28,7 +28,7 @@ def read_file(input_type):
     elif input_type == 2:
         path_X = './datasets/dataset_singlequestion_X.csv'
         path_y = './datasets/dataset_singlequestion_y.csv'
-        X = read_csv(path_X, header=None, names=['q'])
+        X = read_csv(path_X, delimiter='\t', header=None, names=['q'])
         y = read_csv(path_y, delimiter='\t', header=None, names=['y'])
         return (X, y)
 
@@ -52,7 +52,7 @@ def bag_of_words(input_type=1):
     
     X.head()
 
-    vectorizer = CountVectorizer(ngram_range=NG_RANGE, min_df=1, stop_words=None )
+    vectorizer = CountVectorizer(ngram_range=NG_RANGE, min_df=1 )
     X = vectorizer.fit_transform(X)
     print(X.shape)
 
